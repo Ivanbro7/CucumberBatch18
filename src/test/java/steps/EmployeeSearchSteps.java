@@ -4,12 +4,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.CommonMethods;
 
 import java.time.Duration;
 
-public class EmployeeSearchSteps {
+public class EmployeeSearchSteps extends CommonMethods {
 
-    public WebDriver driver;
+    //public WebDriver driver;
 
     @When("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
@@ -38,4 +39,10 @@ public class EmployeeSearchSteps {
         System.out.println("Employee can be seen clearly");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
+
+    @When("user enters valid employee name")
+    public void user_enters_valid_employee_name() {
+        driver.findElement(By.id("empsearch_employee_name_empName")).sendKeys("abel");
+    }
+
 }
