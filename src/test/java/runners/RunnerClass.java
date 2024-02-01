@@ -16,7 +16,10 @@ import org.junit.runner.RunWith;
         //dry run stops the actual execution when set to true
         //it will scan all the steps definitions and provide if there is any step def.
         dryRun = false,
-        tags = "@sprint1"
+        //tags = "@sprint1 and @sprint4"
+        //tags = "@sprint1 or @sprint4"
+        tags = "@sprint1",
+        plugin = {"pretty"}
 
 )
 
