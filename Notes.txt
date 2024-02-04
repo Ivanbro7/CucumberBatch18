@@ -80,7 +80,7 @@ we need junit to work with cucumber
 cucumber options-
 features - the path of features directory to execute all the TC's in one go
 glue - the path of the steps package, runner class will find all the step defs here
-dry run - if we set it to true, it will stop actual executiomn and scans all the steps
+dry run - if we set it to true, it will stop actual execution and scans all the steps
 if any step is missing, it will give me step definition for that step
 if we set it to false, then again execution will st6art
 tags - when we need to execute specific group of test cases or any specific TC
@@ -88,8 +88,6 @@ we use tags.
 There is no limitation of using tags in scenarios
 
 if I want to execute scenarios based on 2 conditions
-
-
 we need config.prop to add all the configuration parameters
 
 class 4 -
@@ -132,3 +130,38 @@ data driven testing
 DDT -
 when your one scenario is executing against multiple sets of data
 our framework is hybrid - it supports BDD and DDT
+
+Class 5 -
+recap -
+
+we can pass data from feature file in terms of parameters
+"data value", it will be considered as a parameter
+
+we can achieve data driven testing using feature file
+we use examples table with scenario outline to pass multiple sets of data
+
+hooks - based on number of data set
+background - based on number of data set
+scenario - based on number of data set
+
+Assertions -
+in cucumber we use, junit assertions.
+
+true - checks the existence of the element/text/field
+equals - checks the exact value of the element
+
+verification - when you check the details on SRS
+validation - when you write code and check in the application
+
+
+POM - page object model design pattern.
+
+as per this design pattern, we have a class for each page available in website
+we will keep locators for this page in the respective class
+login page locators will be in loginpage class and so on
+we call these locators as object repositories
+
+first, create page class and add object repository
+then create the constructor and call page factory
+then create the object of the class in page initializer class
+then comment out previous web element and call objects  with web elements

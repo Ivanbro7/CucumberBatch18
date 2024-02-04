@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         //tags = "@sprint1 and @sprint4"
         //tags = "@sprint1 or @sprint4"
-        tags = "@addemp",
+        tags = "@excel",
         plugin = {"pretty"}
 
 )
