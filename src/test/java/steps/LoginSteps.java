@@ -53,6 +53,7 @@ public class LoginSteps extends CommonMethods {
 
     @When("user enters {string} and {string} and verify the {string}")
     public void user_enters_and_and_verify_the
+            //We are getting these 3 strings from feature file.
             (String usernameValue, String passwordValue, String errorMessage) {
         //  WebElement usernameField = driver.findElement(By.id("txtUsername"));
         //WebElement passwordField = driver.findElement(By.id("txtPassword"));

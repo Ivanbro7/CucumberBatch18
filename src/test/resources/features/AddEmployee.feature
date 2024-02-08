@@ -9,7 +9,7 @@ Feature: Add Employees in HRMS
     And user clicks on Add Employee option
 
   @add @regression
-  Scenario: Adding employee
+  Scenario: Adding employee via hard coded data
     When user enters firstName and middleName and lastName
     And user clicks on save button
     Then employee added successfully
@@ -31,6 +31,14 @@ Feature: Add Employees in HRMS
       |damla      |ms          |dayal     |
       |savera     |ms          |usman     |
       |sino       |ms          |karimi    |
+
+  @datatable
+  Scenario: Adding employees from data table
+    When user add multiple employees from datatable and verify they are added
+      |firstName|middleName|lastName|
+      |sino     |ms        |SP      |
+      |diana    |ms        |longone |
+      |indira   |ms        |gandhi  |
 
   @excel
   Scenario: Adding employees from excel file
