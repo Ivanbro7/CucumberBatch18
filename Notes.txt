@@ -200,3 +200,20 @@ package - code will be packaged into jars and tranfer
 verify - checks the validity of the code
 test - here code will be tested
 clean - target folder will be deleted
+
+screenshot method -
+array of byte
+get time stamp method, it returns time in desired pattern
+
+Scenario class holds the complete information about execution
+log4j
+log file - details -
+
+execution logs - execution details/records
+
+console log -
+
+this is for local execution - log file
+
+instead of reading the details of execution in console, you create separate file
+as log file
