@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 //cucumber options decide what to execute, where to execute
 @CucumberOptions(
-        //features we use to provide the path of the feature files
         features = "@target/failed.txt",
         //glue is the keyword we use to find the gherkin step def
         //we provide  the path of steps package where we have all step defs

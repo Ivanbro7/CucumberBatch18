@@ -1,9 +1,6 @@
 package utils;
 
-import pages.AddEmployeePage;
-import pages.DashboardPage;
-import pages.EmployeeSearchPage;
-import pages.LoginPage;
+import pages.*;
 
 public class PageInitializer {
 
@@ -11,6 +8,7 @@ public class PageInitializer {
     public static DashboardPage dashboardPage;
     public static AddEmployeePage addEmployeePage;
     public static EmployeeSearchPage employeeSearchPage;
+    public static WorkExperienceDetailsPage workExperienceDetailsPage;
 
 
     public static void initializePageObjects(){
@@ -18,6 +16,7 @@ public class PageInitializer {
         dashboardPage = new DashboardPage();
         addEmployeePage = new AddEmployeePage();
         employeeSearchPage = new EmployeeSearchPage();
+        workExperienceDetailsPage = new WorkExperienceDetailsPage();
 
     }
 }

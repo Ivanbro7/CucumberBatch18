@@ -13,12 +13,10 @@ import org.junit.runner.RunWith;
         //glue is the keyword we use to find the gherkin step def
         //we provide  the path of steps package where we have all step defs
         glue = "steps",
-        //dry run stops the actual execution when set to true
-        //it will scan all the steps definitions and provide if there is any step def.
         dryRun = false,
         //tags = "@sprint1 and @sprint4"
         //tags = "@sprint1 or @sprint4"
-        tags = "@sprint1",
+        tags = "@dbTest",
         //from
         plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json"
                 //rerun plugin generates the txt file of all failed test cases

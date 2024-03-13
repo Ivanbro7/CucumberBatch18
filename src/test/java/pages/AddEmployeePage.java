@@ -39,5 +39,6 @@ public class AddEmployeePage extends CommonMethods {
 
     public AddEmployeePage(){
         PageFactory.initElements(driver, this);
+
     }
 }
