@@ -11,11 +11,11 @@ import static org.hamcrest.Matchers.*;
 public class HardCodedExample2HW {
 
     String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA3ODU5NjcsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTcxMDgyOTE2NywidXNlcklkIjoiNjQzOSJ9.AB9UgxwfvDao8Rn33g-PsNdaoAbLk_hw8r4YTY4FQ54";
+    String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTA4ODU4MjcsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTcxMDkyOTAyNywidXNlcklkIjoiNjQzOSJ9.9TyY6asvTHoOiW_Oj6GEqMqgF0TMHcPDlw3xFXEsEWU";
     static String employee_id;
 
 
-    //@Test
+    @Test
     public void aGetAllEmployees(){
 
         RequestSpecification request = given().
@@ -47,7 +47,7 @@ public class HardCodedExample2HW {
                 header("Content-Type","application/json").
                 body("{\n" +
                         "  \"employee_id\": \"106027A\",\n" +
-                        "  \"emp_job_title\": \"Psychopath\"\n" +
+                        "  \"emp_job_title\": \"Psycho\"\n" +
                         "}");
 
         Response response = request.when().patch("/updatePartialEmplyeesDetails.php");
