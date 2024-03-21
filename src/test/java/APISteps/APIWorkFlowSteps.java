@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import utils.APIConstants;
+import utils.APIPayloadConstants;
 
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class APIWorkFlowSteps {
 
     @Given("a request is prepared to create an employee using api call")
     public void a_request_is_prepared_to_create_an_employee_using_api_call() {
+        /*
         request = given().
                 header(APIConstants.HEADER_CONTENT_TYPE_KEY,
                         APIConstants.HEADER_CONTENT_TYPE_VALUE).
@@ -61,6 +63,14 @@ public class APIWorkFlowSteps {
                         "  \"emp_status\": \"permanent\",\n" +
                         "  \"emp_job_title\": \"QA Engineer\"\n" +
                         "}");
+
+         */
+        //calling the payload from API payload constants class
+        request = given().
+                header(APIConstants.HEADER_CONTENT_TYPE_KEY,
+                        APIConstants.HEADER_CONTENT_TYPE_VALUE).
+                header(APIConstants.HEADER_AUTHORIZATION_KEY,token).
+                body(APIPayloadConstants.createEmployeePayload());
     }
 
     @When("a POST call is made to create the employee")
@@ -111,26 +121,25 @@ public class APIWorkFlowSteps {
 
     @Then("the employee has ID {string} must match with global emp id")
     public void the_employee_has_id_must_match_with_global_emp_id(String pathEmpId) {
-        String temporaryEmpId =
-                response.jsonPath().getString(pathEmpId);
+        String temporaryEmpId = response.jsonPath().getString(pathEmpId);
         //here we are comparing both emp id's from get and post call
         Assert.assertEquals(temporaryEmpId, employee_id);
     }
 
     @Then("the data coming from {string} object should match with the data used in post call")
     public void the_data_coming_from_object_should_match_with_the_data_used_in_post_call
-            (String empObject, io.cucumber.datatable.DataTable dataTable) {
+            (String empObject, io.cucumber.datatable.DataTable dataTable) {//we get impObject from the GET call we did, employee is name of body
         //data coming from feature file will be stored here
-        List<Map<String,String>> expectedData = dataTable.asMaps();
+        List<Map<String, String>> expectedData = dataTable.asMaps();
         //data will be taken up from the response from employee object
-        Map<String,String> actualData = response.jsonPath().get(empObject);
+        Map<String, String> actualData = response.jsonPath().get(empObject);
 
         //this is the time to compare the values
-        for (Map<String,String> map:expectedData
+        for (Map<String, String> map : expectedData
         ) {
             //to get all the keys which are unique
-            Set<String> keys   = map.keySet();
-            for (String key:keys
+            Set<String> keys = map.keySet();
+            for (String key : keys
             ) {
                 //this values one by one coming from feature file
                 String expectedValue = map.get(key);
@@ -139,12 +148,34 @@ public class APIWorkFlowSteps {
                 Assert.assertEquals(actualValue, expectedValue);
             }
         }
+    }
+        @Given("a request is prepared to create an employee using json payload")
+        public void a_request_is_prepared_to_create_an_employee_using_json_payload() {
+            request = given().header(APIConstants.HEADER_CONTENT_TYPE_KEY,
+                    APIConstants.HEADER_CONTENT_TYPE_VALUE).
+                    header(APIConstants.HEADER_AUTHORIZATION_KEY,token).
+                    body(APIPayloadConstants.createEmployeeJsonPayload());
+
+
 
 
     }
 
+    @Given("a request is prepared using data {string} , {string} , {string} , {string} , {string} , {string} , {string}")
+    public void a_request_is_prepared_using_data
+            (String firstName, String lastName,
+             String middleName, String gender,
+             String birthday, String status,
+             String jobTitle) {
+        request = given().header(APIConstants.HEADER_CONTENT_TYPE_KEY,
+                        APIConstants.HEADER_CONTENT_TYPE_VALUE).
+                header(APIConstants.HEADER_AUTHORIZATION_KEY, token).
+                body(APIPayloadConstants.createEmployeeJsonPayloadDynamic
+                        (firstName, lastName, middleName, gender,
+                                birthday, status, jobTitle));
 
 
+    }
 }
 
 

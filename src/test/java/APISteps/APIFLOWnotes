@@ -1,0 +1,15 @@
+public void the_data_coming_from_object_should_match_with_the_data_used_in_post_call
+            (String empObject, io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String,String>> expectedData = dataTable.asMaps();
+        Map<String,String> actualData = response.jsonPath().get(empObject);
+
+        for (Map<String,String> map:expectedData
+        ) {
+            Set<String> keys   = map.keySet();
+            for (String key:keys
+            ) {
+                String expectedValue = map.get(key);
+                String actualValue = actualData.get(key);
+                Assert.assertEquals(actualValue, expectedValue);
+            }
+        }
