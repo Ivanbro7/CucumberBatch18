@@ -37,3 +37,12 @@ Feature: API workflow
     And the employee created contains key "Message" and value "Employee Created"
     And the employee id "Employee.employee_id" is stored as global variable
 
+    @updateEmp
+    Scenario: Update employee using json payload
+      Given a request is prepared to update an employee using json payload
+      When a PUT call is made to update the employee
+      Then the status code for this request should be 200
+      And the employee update response should contain key "Message" and value "Employee record Updated"
+      And the data coming from "Employee" object should match with the data used in put call
+        |emp_firstname|emp_lastname|emp_middle_name|emp_gender|emp_birthday|emp_status|emp_job_title  |
+        |Kevin        |Franko      |J              |Male      |2004-08-05  |part-time |QA             |

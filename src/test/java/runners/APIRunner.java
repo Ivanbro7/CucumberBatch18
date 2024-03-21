@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         //tags = "@sprint1 and @sprint4"
         //tags = "@sprint1 or @sprint4"
-        tags = "@dynamic",
+        tags = "@updateEmp",
         //from
         plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json"
                 //rerun plugin generates the txt file of all failed test cases

@@ -47,6 +47,31 @@ public class APIPayloadConstants {
         return obj.toString();
     }
 
+    public static String updateEmployeeJsonPayload(){
+        JSONObject obj = new JSONObject();
+        obj.put("employee_id", "106904A");
+        obj.put("emp_firstname","Kevin");
+        obj.put("emp_lastname","Franko");
+        obj.put("emp_middle_name","J");
+        obj.put("emp_gender","M");
+        obj.put("emp_birthday","2004-08-05");
+        obj.put("emp_status","part-time");
+        obj.put("emp_job_title","QA");
+
+        return obj.toString();
+    }
+
+
+
 
 
 }
+/*
+        obj.put("emp_firstname","Kevin");
+        obj.put("emp_middle_name","J");
+        obj.put("emp_lastname","Franko");
+        obj.put("emp_birthday","2004-08-05");
+        obj.put("emp_gender","Male");
+        obj.put("emp_job_title","QA");
+        obj.put("emp_status","part-time");
+ */

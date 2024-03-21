@@ -176,6 +176,42 @@ public class APIWorkFlowSteps {
 
 
     }
+
+    //------------------------------------------------------------------------------------
+
+    @Given("a request is prepared to update an employee using json payload")
+    public void a_request_is_prepared_to_update_an_employee_using_json_payload() {
+        request = given().header(APIConstants.HEADER_CONTENT_TYPE_KEY,
+                APIConstants.HEADER_CONTENT_TYPE_VALUE).
+                header(APIConstants.HEADER_AUTHORIZATION_KEY, token).
+                body(APIPayloadConstants.updateEmployeeJsonPayload());
+    }
+    @When("a PUT call is made to update the employee")
+    public void a_put_call_is_made_to_update_the_employee() {
+        response = request.when().put(APIConstants.UPDATE_EMPLOYEE);
+    }
+    @Then("the employee update response should contain key {string} and value {string}")
+    public void the_employee_update_response_should_contain_key_and_value(String key, String value) {
+        response.then().assertThat().body(key, equalTo(value));
+        response.prettyPrint();
+    }
+    @Then("the data coming from {string} object should match with the data used in put call")
+    public void the_data_coming_from_object_should_match_with_the_data_used_in_put_call
+            (String empObject, io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> expectedData = dataTable.asMaps();
+        Map<String, String> actualData = response.jsonPath().get(empObject);
+
+        for (Map<String, String> map : expectedData
+        ) {
+            Set<String> keys = map.keySet();
+            for (String key : keys
+            ) {
+                String expectedValue = map.get(key);
+                String actualValue = actualData.get(key);
+                Assert.assertEquals(actualValue, expectedValue);
+            }
+        }
+    }
 }
 
 
